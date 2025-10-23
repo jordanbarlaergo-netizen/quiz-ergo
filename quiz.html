@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz – Journée mondiale de l'ergothérapie</title>
+<style>
+body { font-family: Arial, sans-serif; background:#fff; color:#333; margin:0; padding:0; }
+header { background:#005a9c; color:#fff; padding:20px; text-align:center; }
+h1 { margin:0; font-size:1.8em; }
+.container { max-width:800px; margin:20px auto; padding:20px; background:#f9f9f9; border-radius:10px; }
+.question { margin-bottom:20px; }
+.question h2 { font-size:1.2em; margin-bottom:10px; }
+button { display:block; margin:5px 0; padding:10px; font-size:1em; border:none; border-radius:5px; background:#cce0ff; cursor:pointer; color:#003366; }
+button:hover { background:#99c2ff; }
+button:disabled { background:#e0e0e0; color:#999; cursor:default; }
+input[type=checkbox] { margin-right:10px; }
+.feedback { margin-top:5px; font-weight:bold; color:#005a9c; }
+.feedback p { margin:5px 0; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Quiz – Journée mondiale de l'ergothérapie</h1>
+</header>
+
+<div class="container">
+
+<!-- Question 1 -->
+<div class="question" id="q1">
+<h2>1. Que signifie "ergothérapie" ?</h2>
+<button onclick="showFeedback('q1','Alors non… l\'ergothérapie est bien la thérapie par l\'activité, mais figurez-vous que nous avons souvent entendu « thérapie par les plantes ».')">A. Thérapie par les plantes</button>
+<button onclick="showFeedback('q1','Bonne réponse ! L’ergothérapie signifie thérapie par l’activité.')">B. Thérapie par l'activité</button>
+<div class="feedback" id="q1-feedback"></div>
+</div>
+
+<!-- Question 2 -->
+<div class="question" id="q2">
+<h2>2. L'ergothérapeute peut intervenir sans prescription médicale ?</h2>
+<button onclick="showFeedback('q2','Non, ce n’est pas possible : une prescription médicale est obligatoire pour toute intervention.')">Vrai</button>
+<button onclick="showFeedback('q2','Bonne réponse ! Une prescription médicale est obligatoire pour que l’ergothérapeute puisse intervenir.')">Faux</button>
+<div class="feedback" id="q2-feedback"></div>
+</div>
+
+<!-- Question 3 -->
+<div class="question" id="q3">
+<h2>3. L'ergothérapie est prise en charge par l'assurance maladie de base ?</h2>
+<button onclick="showFeedback('q3','Non, l\'ergothérapie est prise en charge par la LAMal, la LAA ou l’AI, toujours sur prescription médicale.')">Faux</button>
+<button onclick="showFeedback('q3','L\'ergothérapie est prise en charge par l\'assurance maladie de base (LAMal), l\'assurance accident (LAA) ou l\'assurance invalidité (AI) sur prescription médicale.')">Vrai</button>
+<div class="feedback" id="q3-feedback"></div>
+</div>
+
+<!-- Question 4 -->
+<div class="question" id="q4">
+<h2>4. Où l'ergothérapeute peut-il intervenir ?</h2>
+<label><input type="checkbox" value="Domicile"> Domicile</label>
+<label><input type="checkbox" value="Hôpital"> Hôpital</label>
+<label><input type="checkbox" value="EMS"> EMS</label>
+<label><input type="checkbox" value="Cabinet privé"> Cabinet privé</label>
+<label><input type="checkbox" value="Centre de réadaptation"> Centre de réadaptation</label>
+<button onclick="validateMultiple('q4')">Valider</button>
+<div class="feedback" id="q4-feedback"></div>
+</div>
+
+<!-- Question 5 -->
+<div class="question" id="q5">
+<h2>5. À l'HRC, dans quels domaines interviennent les ergothérapeutes ?</h2>
+<label><input type="checkbox" value="Réadaptation gériatrique"> Réadaptation gériatrique</label>
+<label><input type="checkbox" value="Médecine"> Médecine</label>
+<label><input type="checkbox" value="Chirurgie de la main"> Chirurgie de la main</label>
+<label><input type="checkbox" value="Orthopédie"> Orthopédie</label>
+<label><input type="checkbox" value="Soins critiques"> Soins critiques</label>
+<label><input type="checkbox" value="Stroke Unit"> Stroke Unit</label>
+<label><input type="checkbox" value="Chirurgie générale"> Chirurgie générale</label>
+<label><input type="checkbox" value="UHCD"> UHCD</label>
+<button onclick="validateMultiple('q5')">Valider</button>
+<div class="feedback" id="q5-feedback"></div>
+</div>
+
+<!-- Question 6 -->
+<div class="question" id="q6">
+<h2>6. Quand appeler l'ergothérapeute ?</h2>
+<label><input type="checkbox" value="Evaluer un patient concernant son indépendance / autonomie au quotidien"> Evaluer un patient concernant son indépendance / autonomie au quotidien</label>
+<label><input type="checkbox" value="Effectuer une orthèse + Débuter rééducation de la main"> Effectuer une orthèse + Débuter rééducation de la main</label>
+<label><input type="checkbox" value="Mise en situation en activités"> Mise en situation en activités</label>
+<label><input type="checkbox" value="Mon patient s'ennuie ... ça l’occupera"> Mon patient s'ennuie ... ça l’occupera</label>
+<label><input type="checkbox" value="Organiser le retour à domicile"> Organiser le retour à domicile</label>
+<label><input type="checkbox" value="Je ne sais pas ... Cela ne fera pas de mal"> Je ne sais pas ... Cela ne fera pas de mal</label>
+<label><input type="checkbox" value="Aider à définir le projet d'orientation du patient"> Aider à définir le projet d'orientation du patient</label>
+<button onclick="validateMultiple('q6')">Valider</button>
+<div class="feedback" id="q6-feedback"></div>
+</div>
+
+<!-- Question 7 -->
+<div class="question" id="q7">
+<h2>7. L'ergothérapie concerne tous les domaines de la vie quotidienne ?</h2>
+<button onclick="showFeedback('q7','Non, elle s’intéresse à tous les domaines de la vie quotidienne.')">Faux</button>
+<button onclick="showFeedback('q7','Bonne réponse ! L’ergothérapie vise à améliorer l’autonomie dans tous les aspects de la vie quotidienne.')">Vrai</button>
+<div class="feedback" id="q7-feedback"></div>
+</div>
+
+<!-- Question 8 -->
+<div class="question" id="q8">
+<h2>8. L'objectif de l'ergothérapeute est de fournir des moyens auxiliaires ?</h2>
+<button onclick="showFeedback('q8','Non, fournir des moyens auxiliaires n’est qu’une partie de l’intervention, pas l’objectif principal.')">Vrai</button>
+<button onclick="showFeedback('q8','Exact ! L’objectif principal est d’améliorer l’autonomie, mais fournir des moyens auxiliaires est un outil parmi d’autres.')">Faux</button>
+<div class="feedback" id="q8-feedback"></div>
+</div>
+
+<!-- Question 9 -->
+<div class="question" id="q9">
+<h2>9. L'ergothérapeute s'occupe d'aménager le domicile ?</h2>
+<button onclick="showFeedback('q9','Non, l’aménagement du domicile fait partie de son rôle.')">Faux</button>
+<button onclick="showFeedback('q9','Exact, il propose des aménagements pour sécuriser et faciliter la vie à domicile.')">Vrai</button>
+<div class="feedback" id="q9-feedback"></div>
+</div>
+
+<!-- Question 10 -->
+<div class="question" id="q10">
+<h2>10. L'ergothérapeute travaille beaucoup en interdisciplinarité ?</h2>
+<button onclick="showFeedback('q10','Non, l’interdisciplinarité est essentielle dans leur travail.')">Faux</button>
+<button onclick="showFeedback('q10','Bonne réponse ! L’ergothérapeute collabore étroitement avec médecins, infirmiers, physiothérapeutes et autres professionnels.')">Vrai</button>
+<div class="feedback" id="q10-feedback"></div>
+</div>
+
+<div class="container" id="end-message" style="display:none; text-align:center;">
+<h2>Merci d’avoir participé ! Bonne Journée mondiale de l’ergothérapie 🎉</h2>
+</div>
+
+<script>
+// Questions 1-3,7-10 : choix unique
+function showFeedback(id,msg){
+  document.getElementById(id+'-feedback').innerHTML=msg;
+  document.querySelectorAll('#'+id+' button').forEach(b=>b.disabled=true);
+  let next=document.getElementById('q'+(parseInt(id.slice(1))+1));
+  if(next){next.scrollIntoView({behavior:'smooth'});}
+  else{document.getElementById('end-message').style.display='block';document.getElementById('end-message').scrollIntoView({behavior:'smooth'});}
+}
+
+// Questions 4-6 : choix multiples avec validation
+function validateMultiple(questionId){
+    const questionDiv = document.getElementById(questionId);
+    const feedbackDiv = questionDiv.querySelector('.feedback');
+    feedbackDiv.innerHTML = '';
+
+    const checkboxes = questionDiv.querySelectorAll('input[type=checkbox]');
+    let selected = [];
+    let allSelected = true;
+    let wrongSelected = false;
+
+    checkboxes.forEach(cb => {
+        if(cb.checked){
+            if(questionId === 'q6' && (cb.value === "Mon patient s'ennuie ... ça l’occupera" || cb.value === "Je ne sais pas ... Cela ne fera pas de mal")){
+                wrongSelected = true;
+            } else {
+                selected.push(cb.value);
+            }
+        } else {
+            if(questionId === 'q4' || questionId === 'q5' || (questionId === 'q6' && cb.value !== "Mon patient s'ennuie ... ça l’occupera" && cb.value !== "Je ne sais pas ... Cela ne fera pas de mal")){
+                allSelected = false;
+            }
+        }
+    });
+
+    let p = document.createElement('p');
+
+    if(questionId === 'q6'){
+        if(selected.length>0 && !wrongSelected && allSelected){
+            p.textContent = 'Bonne réponse ! L’ergothérapeute peut intervenir dans toutes les situations cochées. Chaque intervention se base sur des objectifs précis pour améliorer l’autonomie du patient.';
+            feedbackDiv.appendChild(p);
+        } else {
+            if(selected.length>0){
+                p.textContent = 'Vous avez sélectionné certaines bonnes réponses.';
+                feedbackDiv.appendChild(p);
+            }
+            if(!allSelected || wrongSelected){
+                let reminder=document.createElement('p');
+                reminder.textContent='Attention : l’ergothérapeute intervient dans toutes les situations listées, sauf pour ces 2 réponses (« Mon patient s\'ennuie ... ça l’occupera » et « Je ne sais pas ... Cela ne fera pas de mal »), car l’ergothérapeute n’est pas là pour juste occuper le patient, chacune des interventions se base sur des objectifs.';
+                reminder.style.color = 'red';
+                feedbackDiv.appendChild(reminder);
+            }
+        }
+    } else {
+        if(allSelected){
+            p.textContent = 'Bravo ! Vous avez coché toutes les propositions. L’ergothérapeute intervient effectivement dans chacune d’elles.';
+        } else if(selected.length>0){
+            p.textContent = 'Vous avez coché certaines propositions correctes, mais l’ergothérapeute intervient dans toutes les propositions listées, même celles que vous n’avez pas sélectionnées.';
+        } else{
+            p.textContent = 'Vous n’avez sélectionné aucune réponse. L’ergothérapeute intervient dans toutes les propositions listées.';
+        }
+        feedbackDiv.appendChild(p);
+    }
+
+    checkboxes.forEach(cb => cb.disabled = true);
+    questionDiv.querySelector('button').disabled = true;
+
+    const nextQ = document.getElementById('q' + (parseInt(questionId.slice(1)) + 1));
+    if(nextQ){
+        nextQ.scrollIntoView({behavior:'smooth'});
+    } else {
+        document.getElementById('end-message').style.display='block';
+        document.getElementById('end-message').scrollIntoView({behavior:'smooth'});
+    }
+}
+</script>
+
+</body>
+</html>
